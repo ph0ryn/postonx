@@ -67,14 +67,5 @@ export function truncateTextToFitXLimit(
 }
 
 export function toQuotedBlock(text: string): string {
-  return text
-    .split("\n")
-    .map((line) => {
-      if (line.length === 0) {
-        return ">";
-      }
-
-      return `> ${line}`;
-    })
-    .join("\n");
+  return text.replace(/^/gm, "> ");
 }
