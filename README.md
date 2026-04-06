@@ -1,23 +1,11 @@
-# postonx
+<div align="center">
+  <img src="public/icon.png" alt="logo" width="160" height="160" />
+  <h3>postonx</h3>
+  <p><em>Chrome extension to share the current web page on X with a single click.</em></p>
+</div>
+
+## description
 
 A WXT + React-based browser extension that opens the X compose screen from the
 toolbar action or context menu with the current page URL or selected text
 prefilled.
-
-## Requirements
-
-- pnpm
-
-## Local Development
-
-1. Install dependencies with `pnpm install`
-2. Start the dev builder with `pnpm run dev`
-3. Load the generated extension from `.output/chrome-mv3/`
-
-## Tooling
-
-- [WXT](https://wxt.dev/)
-- [React](https://react.dev/)
-- [ESLint](./eslint.config.mjs)
-- [oxlint](./oxlint.config.ts)
-- [oxfmt](./.oxfmtrc.jsonc)
