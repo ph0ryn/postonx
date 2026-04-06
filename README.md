@@ -1,7 +1,8 @@
 # postonx
 
 A WXT + React-based browser extension that opens the X compose screen from the
-context menu with the current page URL or selected text prefilled.
+toolbar action or context menu with the current page URL or selected text
+prefilled.
 
 ## Requirements
 

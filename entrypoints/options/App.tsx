@@ -12,8 +12,8 @@ export default function App() {
         <p className="eyebrow">Post on X</p>
         <h1>Share what you are reading without leaving the page.</h1>
         <p className="lede">
-          Use the context menu to send the current page URL or a selected quote to the X compose
-          screen. The extension stops before posting so you stay in control.
+          Use the toolbar icon or the context menu to send the current page URL or a selected quote
+          to the X compose screen. The extension stops before posting so you stay in control.
         </p>
       </section>
 
@@ -26,7 +26,8 @@ export default function App() {
           <li>
             <strong>Quote selected text on X</strong> opens X with the selected text and page URL.
           </li>
-          <li>Clicking the toolbar icon opens this settings page instead of showing a popup.</li>
+          <li>Clicking the toolbar icon shares the current page without showing a popup.</li>
+          <li>Open this settings page from the browser's extension options entry.</li>
         </ul>
       </section>
 

@@ -32,7 +32,7 @@ wxt.config.ts
 
 - WXT background entrypoint for the MV3 service worker
 - Registers context menus on install/startup
-- Opens the options page when the toolbar action is clicked
+- Shares the current page when the toolbar action is clicked
 - Dispatches context menu clicks to the share helpers
 
 ### `background/context-menus.ts`

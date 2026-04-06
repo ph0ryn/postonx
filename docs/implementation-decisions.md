@@ -11,7 +11,7 @@
 
 ## 2. 画面と遷移
 
-- 拡張機能アイコン押下時は action popup を出さず、options ページを開く
+- 拡張機能アイコン押下時は action popup を出さず、現在タブの共有を実行する
 - options ページは `options_ui.open_in_tab = true` とし、タブで表示する
 - X の投稿画面は popup window で開く
 

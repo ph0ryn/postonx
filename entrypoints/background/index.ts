@@ -46,6 +46,14 @@ async function handleContextMenuClick(
   }
 }
 
+async function handleToolbarActionClick(tab?: Browser.tabs.Tab): Promise<void> {
+  const didShare = await sharePage(tab?.url);
+
+  if (!didShare) {
+    console.warn("Skipped page share because no supported page URL was found.");
+  }
+}
+
 export default defineBackground(() => {
   const registerContextMenus = () => {
     void ensureContextMenus().catch((error) => {
@@ -56,9 +64,9 @@ export default defineBackground(() => {
   browser.runtime.onInstalled.addListener(registerContextMenus);
   browser.runtime.onStartup?.addListener(registerContextMenus);
 
-  browser.action.onClicked.addListener(() => {
-    void browser.runtime.openOptionsPage().catch((error) => {
-      console.error("Failed to open the options page.", error);
+  browser.action.onClicked.addListener((tab) => {
+    void handleToolbarActionClick(tab).catch((error) => {
+      console.error("Failed to handle the toolbar action.", error);
     });
   });
 
