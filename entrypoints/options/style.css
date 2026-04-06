@@ -1,0 +1,134 @@
+:root {
+  color: #10233a;
+  background:
+    radial-gradient(circle at top left, rgb(255 220 170 / 0.95), transparent 30%),
+    linear-gradient(160deg, #fffaf3 0%, #eef5ff 100%);
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.layout {
+  display: grid;
+  gap: 1.5rem;
+  margin: 0 auto;
+  max-width: 72rem;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.hero,
+.panel {
+  border: 1px solid rgb(16 35 58 / 0.12);
+  border-radius: 1.5rem;
+  background: rgb(255 255 255 / 0.82);
+  box-shadow: 0 24px 60px rgb(16 35 58 / 0.08);
+  backdrop-filter: blur(18px);
+}
+
+.hero {
+  padding: 2rem;
+}
+
+.panel {
+  padding: 1.5rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  color: #8f4a11;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+h1 {
+  max-width: 14ch;
+  font-size: clamp(2.2rem, 4vw, 4.25rem);
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+h3 {
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.lede,
+.panel p,
+.list {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.lede {
+  max-width: 54rem;
+  margin-top: 1rem;
+}
+
+.list {
+  display: grid;
+  gap: 0.75rem;
+  padding-left: 1.2rem;
+}
+
+.split {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.template-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.template-card {
+  padding: 1rem;
+  border-radius: 1rem;
+  background: linear-gradient(180deg, #f7f2ea 0%, #edf4ff 100%);
+}
+
+pre {
+  overflow-x: auto;
+  margin: 0;
+  padding: 0.9rem 1rem;
+  border-radius: 0.9rem;
+  background: #10233a;
+  color: #f8fbff;
+  font-family: "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.95rem;
+}
+
+code {
+  white-space: pre-wrap;
+}
+
+@media (min-width: 860px) {
+  .split {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: start;
+  }
+
+  .template-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
