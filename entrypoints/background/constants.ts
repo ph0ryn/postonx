@@ -1,4 +1,4 @@
-export const X_COMPOSE_URL = "https://twitter.com/intent/tweet";
+export const X_COMPOSE_URL = "https://x.com/intent/post";
 
 export const SHARE_PAGE_MENU_ID = "share-page-on-x";
 export const QUOTE_SELECTED_TEXT_MENU_ID = "quote-selected-text-on-x";
