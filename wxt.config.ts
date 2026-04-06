@@ -7,4 +7,5 @@ export default defineConfig({
     name: "Post on X",
     permissions: ["activeTab", "contextMenus", "tabs"],
   },
+  modules: ["@wxt-dev/module-react"],
 });

@@ -230,9 +230,8 @@ ${url}
 ### NFR-6: 実装基盤
 
 - 実装基盤には WXT を採用すること
-- UI 実装は vanilla TypeScript と CSS を用い、初期版では React を導入しない
-  こと
-- ディレクトリ構成は WXT の vanilla init に可能な限り揃えること
+- options UI 実装には React と CSS を用いること
+- ディレクトリ構成は WXT の React template に可能な限り揃えること
 
 ## 10. 受け入れ条件
 
@@ -298,8 +297,8 @@ X の投稿画面に事前入力されること。
 ## 11. 実装で確定した事項
 
 - 拡張機能のビルド・manifest 生成・entrypoint 管理には WXT を使用する
-- options 画面は vanilla TypeScript と CSS で実装し、React は導入しない
-- ディレクトリ構成は WXT の vanilla init に近い構成を採用する
+- options 画面は React と CSS で実装する
+- ディレクトリ構成は WXT の React template に近い構成を採用する
 - 拡張機能アイコン押下時は options ページをタブで開く
 - X の投稿画面は新規タブで開く
 - 選択テキストの短縮上限は 240 文字とする

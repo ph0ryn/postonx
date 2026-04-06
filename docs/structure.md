@@ -1,6 +1,6 @@
 # Structure
 
-`docs/requirements.md` を前提に、WXT の vanilla init に可能な限り寄せた
+`docs/requirements.md` を前提に、WXT の React template に可能な限り寄せた
 初期版構成。
 
 具体的な実装判断は `docs/implementation-decisions.md` を参照する。
@@ -8,9 +8,6 @@
 ## Directory Layout
 
 ```text
-components/
-  options-page.ts
-
 entrypoints/
   background/
     constants.ts
@@ -21,19 +18,13 @@ entrypoints/
     text.ts
     url.ts
   options/
+    App.tsx
     index.html
-    main.ts
+    main.tsx
     style.css
 
 wxt.config.ts
 ```
-
-## `components/`
-
-### `options-page.ts`
-
-- Renders the static settings content with plain DOM APIs
-- Keeps the options entrypoint thin, similar to the WXT vanilla init layout
 
 ## `entrypoints/`
 
@@ -76,19 +67,27 @@ wxt.config.ts
 
 - WXT HTML entrypoint for the options page
 - Declares `manifest.open_in_tab`
-- Loads the vanilla TypeScript options UI
+- Loads the React options UI
 
-### `options/main.ts`
+### `options/App.tsx`
 
-- Mounts the options page component
+- Defines the React options screen
+- Keeps the page content colocated with the entrypoint, following the WXT React
+  template style
+
+### `options/main.tsx`
+
+- Mounts the React options app with `ReactDOM.createRoot`
+- Wraps the tree in `React.StrictMode`, matching the WXT React template
 
 ### `options/style.css`
 
-- Styles the options page without any UI framework
+- Styles the options page without adding another UI framework on top of React
 
 ## `wxt.config.ts`
 
 - Defines the extension name and description
+- Enables the `@wxt-dev/module-react` module
 - Declares the minimum permissions:
   - `contextMenus`
   - `activeTab`
@@ -100,8 +99,9 @@ wxt.config.ts
 - WXT owns manifest generation and entrypoint wiring
 - Entry points stay explicit without reintroducing a custom build setup
 - Background helpers stay colocated with the background entrypoint
-- Options rendering follows the init-style `components/` split
-- No React or other UI runtime is introduced
+- Options rendering follows the WXT React template's `App.tsx` + `main.tsx`
+  split
+- React is introduced only for the options UI
 - No `content_scripts` are needed for v1 because the context menu click event
   already provides the selected text
 - No persistent settings are added because storage is still out of scope

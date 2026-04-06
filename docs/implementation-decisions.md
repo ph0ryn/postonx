@@ -6,8 +6,8 @@
 ## 1. 採用技術
 
 - Manifest V3 拡張の基盤として WXT を採用する
-- UI フレームワークは導入せず、vanilla TypeScript と CSS で構成する
-- 初期版では React は使わない
+- options UI には React を採用し、WXT React template の構成に寄せる
+- スタイリングは CSS のまま維持し、追加の UI フレームワークは導入しない
 
 ## 2. 画面と遷移
 
@@ -42,14 +42,13 @@
 ## 4. ディレクトリ方針
 
 - `src/` は使わず、WXT の慣例に合わせて `entrypoints/` を基点にする
-- options 画面の描画ロジックは `components/` に分離する
+- options 画面は `entrypoints/options/App.tsx` と `main.tsx` に集約する
 - background 関連の helper は `entrypoints/background/` 配下へ寄せる
-- 目的は、WXT vanilla init の構造に寄せつつ、この拡張に必要な最小構成を保つ
-  ことにある
+- 目的は、WXT React template の構造にできるだけ寄せつつ、この拡張に必要
+  な最小構成を保つことにある
 
 ## 5. 初期版で採らないもの
 
-- React などの UI フレームワーク
 - action popup
 - content script
 - 永続設定用の `storage`

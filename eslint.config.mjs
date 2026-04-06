@@ -7,7 +7,7 @@ export default defineConfig(
     ignores: [".output/**", ".wxt/**", "dist/**"],
   },
   {
-    files: ["components/**/*.ts", "entrypoints/**/*.ts", "wxt.config.ts"],
+    files: ["entrypoints/**/*.{ts,tsx}", "wxt.config.ts"],
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
