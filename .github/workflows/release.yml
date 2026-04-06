@@ -22,7 +22,7 @@ jobs:
           version: 10.33.0
           run_install: false
 
-      - run: pnpm install --frozen-lockfile
+      - run: pnpm install --frozen-lockfile -P
 
       - run: pnpm run build
 
