@@ -1,0 +1,115 @@
+# Structure
+
+`docs/requirements.md` を前提に、WXT の vanilla init に可能な限り寄せた
+初期版構成。
+
+具体的な実装判断は `docs/implementation-decisions.md` を参照する。
+
+## Directory Layout
+
+```text
+components/
+  options-page.ts
+
+entrypoints/
+  background/
+    constants.ts
+    context-menus.ts
+    index.ts
+    share.ts
+    templates.ts
+    text.ts
+    url.ts
+  options/
+    index.html
+    main.ts
+    style.css
+
+wxt.config.ts
+```
+
+## `components/`
+
+### `options-page.ts`
+
+- Renders the static settings content with plain DOM APIs
+- Keeps the options entrypoint thin, similar to the WXT vanilla init layout
+
+## `entrypoints/`
+
+### `background/index.ts`
+
+- WXT background entrypoint for the MV3 service worker
+- Registers context menus on install/startup
+- Opens the options page when the toolbar action is clicked
+- Dispatches context menu clicks to the share helpers
+
+### `background/context-menus.ts`
+
+- Defines menu metadata
+- Creates `Share page on X`
+- Creates `Quote selected text on X`
+
+### `background/share.ts`
+
+- Validates input before sharing
+- Builds compose text
+- Opens the X compose tab
+
+### `background/templates.ts`
+
+- Page share template
+- Quote share template
+
+### `background/text.ts`
+
+- Normalizes selected text
+- Truncates long selections and appends `...`
+- Prefixes quoted lines with `>`
+
+### `background/url.ts`
+
+- Rejects unsupported protocols
+- Removes common tracking query parameters while preserving page identity
+
+### `options/index.html`
+
+- WXT HTML entrypoint for the options page
+- Declares `manifest.open_in_tab`
+- Loads the vanilla TypeScript options UI
+
+### `options/main.ts`
+
+- Mounts the options page component
+
+### `options/style.css`
+
+- Styles the options page without any UI framework
+
+## `wxt.config.ts`
+
+- Defines the extension name and description
+- Declares the minimum permissions:
+  - `contextMenus`
+  - `activeTab`
+  - `tabs`
+- Leaves popup UI undefined so the action click is handled in the background
+
+## Why This Shape
+
+- WXT owns manifest generation and entrypoint wiring
+- Entry points stay explicit without reintroducing a custom build setup
+- Background helpers stay colocated with the background entrypoint
+- Options rendering follows the init-style `components/` split
+- No React or other UI runtime is introduced
+- No `content_scripts` are needed for v1 because the context menu click event
+  already provides the selected text
+- No persistent settings are added because storage is still out of scope
+
+## Not Added Yet
+
+- `content-scripts/`
+- `popup/`
+- `storage.ts`
+
+Add them only when the requirements actually need them.
