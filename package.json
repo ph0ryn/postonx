@@ -1,17 +1,24 @@
 {
-  "name": "ts-base",
+  "name": "postonx",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
-  "module": "src/index.ts",
   "scripts": {
-    "format": "pnpm run lint --fix . ; oxfmt . ; eslint --fix .",
+    "build": "wxt build",
+    "build:firefox": "wxt build -b firefox",
+    "dev": "wxt",
+    "dev:firefox": "wxt -b firefox",
+    "format": "oxlint --type-aware --type-check --fix . && oxfmt . && eslint --fix .",
     "preinstall": "npx only-allow pnpm",
-    "postinstall": "git config core.hooksPath .githooks",
+    "postinstall": "git config core.hooksPath .githooks && wxt prepare",
     "lint": "oxlint --type-aware --type-check",
-    "precommit": "pnpm run format"
+    "precommit": "pnpm run format",
+    "typecheck": "tsc --noEmit",
+    "zip": "wxt zip",
+    "zip:firefox": "wxt zip -b firefox"
   },
   "lint-staged": {
-    "src/**/*.ts": [
+    "**/*.ts": [
       "pnpm run precommit"
     ],
     "*.{js,mjs}": [
@@ -35,7 +42,8 @@
     "oxlint-tsgolint": "catalog:",
     "sort-package-json": "catalog:",
     "typescript": "catalog:",
-    "typescript-eslint": "catalog:"
+    "typescript-eslint": "catalog:",
+    "wxt": "catalog:"
   },
   "packageManager": "pnpm@10.33.0"
 }
