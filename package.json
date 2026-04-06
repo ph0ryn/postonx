@@ -33,12 +33,14 @@
   },
   "dependencies": {
     "react": "catalog:",
-    "react-dom": "catalog:"
+    "react-dom": "catalog:",
+    "twitter-text": "catalog:"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "@types/twitter-text": "catalog:",
     "@typescript/native-preview": "catalog:",
     "@wxt-dev/module-react": "catalog:",
     "eslint": "catalog:",

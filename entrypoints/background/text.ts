@@ -1,3 +1,5 @@
+import twitterText from "twitter-text";
+
 export function normalizeSelectedText(rawText: string | undefined): string | null {
   if (rawText == null || rawText.length === 0) {
     return null;
@@ -18,14 +20,50 @@ export function normalizeSelectedText(rawText: string | undefined): string | nul
   return normalizedText;
 }
 
-export function truncateSelectedText(text: string, maxLength: number): string {
-  const characters = Array.from(text);
+export function getXWeightedLength(text: string): number {
+  return twitterText.parseTweet(text).weightedLength;
+}
 
-  if (characters.length <= maxLength) {
+interface TruncateTextToFitXLimitOptions {
+  buildText: (text: string) => string;
+  maxWeightedLength: number;
+  omission?: string;
+}
+
+export function truncateTextToFitXLimit(
+  text: string,
+  { buildText, maxWeightedLength, omission = "..." }: TruncateTextToFitXLimitOptions,
+): string {
+  if (getXWeightedLength(buildText(text)) <= maxWeightedLength) {
     return text;
   }
 
-  return `${characters.slice(0, maxLength - 3).join("")}...`;
+  const characters = Array.from(text);
+  let low = 0;
+  let high = characters.length - 1;
+  let bestCandidate = "";
+
+  while (low <= high) {
+    const middle = Math.floor((low + high) / 2);
+    const candidate = `${characters.slice(0, middle).join("")}${omission}`;
+
+    if (getXWeightedLength(buildText(candidate)) <= maxWeightedLength) {
+      bestCandidate = candidate;
+      low = middle + 1;
+    } else {
+      high = middle - 1;
+    }
+  }
+
+  if (bestCandidate.length > 0) {
+    return bestCandidate;
+  }
+
+  if (getXWeightedLength(buildText(omission)) <= maxWeightedLength) {
+    return omission;
+  }
+
+  return "";
 }
 
 export function toQuotedBlock(text: string): string {
