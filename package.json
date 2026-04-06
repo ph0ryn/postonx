@@ -32,9 +32,11 @@
     ]
   },
   "dependencies": {
+    "@wxt-dev/module-react": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "twitter-text": "catalog:"
+    "twitter-text": "catalog:",
+    "wxt": "catalog:"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin": "catalog:",
@@ -42,7 +44,6 @@
     "@types/react-dom": "catalog:",
     "@types/twitter-text": "catalog:",
     "@typescript/native-preview": "catalog:",
-    "@wxt-dev/module-react": "catalog:",
     "eslint": "catalog:",
     "eslint-plugin-oxlint": "catalog:",
     "lint-staged": "catalog:",
@@ -51,8 +52,7 @@
     "oxlint-tsgolint": "catalog:",
     "sort-package-json": "catalog:",
     "typescript": "catalog:",
-    "typescript-eslint": "catalog:",
-    "wxt": "catalog:"
+    "typescript-eslint": "catalog:"
   },
   "packageManager": "pnpm@10.33.0"
 }
