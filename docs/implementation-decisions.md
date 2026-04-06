@@ -13,7 +13,7 @@
 
 - 拡張機能アイコン押下時は action popup を出さず、options ページを開く
 - options ページは `options_ui.open_in_tab = true` とし、タブで表示する
-- X の投稿画面は新規タブで開く
+- X の投稿画面は popup window で開く
 
 ## 3. 共有時の加工ルール
 

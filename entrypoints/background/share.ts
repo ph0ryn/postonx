@@ -5,14 +5,20 @@ import { buildPageShareText, buildQuoteShareText } from "./templates";
 import { normalizeSelectedText, truncateTextToWeightedLength } from "./text";
 import { sanitizeShareUrl } from "./url";
 
+const COMPOSE_POPUP_WIDTH = 720;
+const COMPOSE_POPUP_HEIGHT = 450;
+
 async function openComposeScreen(prefilledText: string): Promise<void> {
   const composeUrl = new URL(X_COMPOSE_URL);
 
   composeUrl.searchParams.set("text", prefilledText);
 
-  await browser.tabs.create({
-    active: true,
+  await browser.windows.create({
+    focused: true,
+    height: COMPOSE_POPUP_HEIGHT,
+    type: "popup",
     url: composeUrl.toString(),
+    width: COMPOSE_POPUP_WIDTH,
   });
 }
 
