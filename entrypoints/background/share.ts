@@ -1,8 +1,8 @@
 import { browser } from "#imports";
 
-import { X_COMPOSE_URL, X_MAX_WEIGHTED_LENGTH, X_TRUNCATION_SUFFIX } from "./constants";
+import { X_COMPOSE_URL, X_QUOTE_TEXT_MAX_WEIGHTED_LENGTH, X_TRUNCATION_SUFFIX } from "./constants";
 import { buildPageShareText, buildQuoteShareText } from "./templates";
-import { normalizeSelectedText, truncateTextToFitXLimit } from "./text";
+import { normalizeSelectedText, truncateTextToWeightedLength } from "./text";
 import { sanitizeShareUrl } from "./url";
 
 async function openComposeScreen(prefilledText: string): Promise<void> {
@@ -39,9 +39,8 @@ export async function quoteSelectedText(
     return false;
   }
 
-  const truncatedText = truncateTextToFitXLimit(normalizedText, {
-    buildText: (text) => buildQuoteShareText(text, sanitizedUrl),
-    maxWeightedLength: X_MAX_WEIGHTED_LENGTH,
+  const truncatedText = truncateTextToWeightedLength(normalizedText, {
+    maxWeightedLength: X_QUOTE_TEXT_MAX_WEIGHTED_LENGTH,
     omission: X_TRUNCATION_SUFFIX,
   });
 

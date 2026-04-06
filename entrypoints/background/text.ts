@@ -24,17 +24,16 @@ export function getXWeightedLength(text: string): number {
   return twitterText.parseTweet(text).weightedLength;
 }
 
-interface TruncateTextToFitXLimitOptions {
-  buildText: (text: string) => string;
+interface TruncateTextToWeightedLengthOptions {
   maxWeightedLength: number;
   omission?: string;
 }
 
-export function truncateTextToFitXLimit(
+export function truncateTextToWeightedLength(
   text: string,
-  { buildText, maxWeightedLength, omission = "..." }: TruncateTextToFitXLimitOptions,
+  { maxWeightedLength, omission = "..." }: TruncateTextToWeightedLengthOptions,
 ): string {
-  if (getXWeightedLength(buildText(text)) <= maxWeightedLength) {
+  if (getXWeightedLength(text) <= maxWeightedLength) {
     return text;
   }
 
@@ -47,7 +46,7 @@ export function truncateTextToFitXLimit(
     const middle = Math.floor((low + high) / 2);
     const candidate = `${characters.slice(0, middle).join("")}${omission}`;
 
-    if (getXWeightedLength(buildText(candidate)) <= maxWeightedLength) {
+    if (getXWeightedLength(candidate) <= maxWeightedLength) {
       bestCandidate = candidate;
       low = middle + 1;
     } else {
@@ -59,7 +58,7 @@ export function truncateTextToFitXLimit(
     return bestCandidate;
   }
 
-  if (getXWeightedLength(buildText(omission)) <= maxWeightedLength) {
+  if (getXWeightedLength(omission) <= maxWeightedLength) {
     return omission;
   }
 
