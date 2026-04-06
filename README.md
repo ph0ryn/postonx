@@ -1,31 +1,21 @@
-# ts-base
+# postonx
 
-ph0ryn's typescript base template
+A WXT-based browser extension that opens the X compose screen from the context
+menu with the current page URL or selected text prefilled.
 
-## requirement
+## Requirements
 
-- pnpm (package manager)
+- pnpm
 
-## script
+## Local Development
 
-`pnpm run <script>`
+1. Install dependencies with `pnpm install`
+2. Start the dev builder with `pnpm run dev`
+3. Load the generated extension from `.output/chrome-mv3/`
 
-```json
-{
-  "format": "pnpm run lint --fix . ; oxfmt . ; eslint --fix .",
-  "lint": "oxlint --type-aware --type-check",
-  "precommit": "pnpm run format"
-}
-```
+## Tooling
 
-## Linter
-
+- [WXT](https://wxt.dev/)
 - [ESLint](./eslint.config.mjs)
-  - typescript-eslint
-  - @stylistic/eslint-plugin
 - [oxlint](./oxlint.config.ts)
-  - @stylistic/eslint-plugin
-
-## Formatter
-
 - [oxfmt](./.oxfmtrc.jsonc)
