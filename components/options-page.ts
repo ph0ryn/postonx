@@ -1,4 +1,5 @@
-const pageShareTemplate = String.raw`読んでる \${url}`;
+const pageShareTemplate = String.raw`読んでる
+\${url}`;
 const quoteShareTemplate = String.raw`
 
 > \${text}
